@@ -18,7 +18,7 @@ class FileSQLController extends FileController
 
         if (isset($file)) {
             Storage::disk('db')->delete($file);
-            File::where('name', $file)->first()->delete();
+            File::where('name', $file)->delete();
             $message .= 'Dump file with name ' . $file . ' has been deleted <br>';
 
             return redirect()->back()->with('success_file', $message);
