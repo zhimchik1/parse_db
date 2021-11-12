@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class FileSQLController extends FileController
 {
+
     public function removeFile(Request $request)
     {
         $file = $request->input('file');
@@ -24,9 +25,12 @@ class FileSQLController extends FileController
             return redirect()->back()->with('success_file', $message);
 
         } else {
+
             return redirect()->back()->with('danger_file', 'Nothing to delete');
         }
     }
+
+
     public function export()
     {
         $tables = DB::connection('mysql2')->select('SHOW TABLES');
@@ -66,6 +70,7 @@ class FileSQLController extends FileController
         return redirect('home')->with('status_export', 'Export update');
     }
 
+
     public function removeExport(Request $request)
     {
         $file = $request->input('file');
@@ -78,10 +83,13 @@ class FileSQLController extends FileController
             $data->delete();
 
             return redirect()->back()->with('success_removeExport', $message);
+
         } else {
+
             return redirect()->back()->with('danger_removeExport', 'Nothing to delete');
         }
     }
+
 
     public function downloadExportFile(Request $request)
     {
@@ -96,14 +104,10 @@ class FileSQLController extends FileController
             );
 
             return Response::download($downloadFile, $data->file_name, $headers);
+
         } else {
+
             return redirect()->back()->with('danger_downloadExportFile', 'File not exist');
         }
-
-
     }
-
-
-
-
 }

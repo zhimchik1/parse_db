@@ -8,6 +8,7 @@ use SimpleXMLElement;
 
 class ExportXMLController extends ExportController
 {
+
     public function GenerateExport($data)
     {
         $fileName = 'ExportXML.xml';
@@ -18,7 +19,7 @@ class ExportXMLController extends ExportController
         $xml->saveXML(storage_path() . "/export/" . $fileName);
 
         Export::firstOrCreate(
-            ['file_name' =>$fileName],
+            ['file_name' => $fileName],
             ['format' => 'xml', 'updated_at' => time()]
         );
 

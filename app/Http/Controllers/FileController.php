@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FileController extends Controller
+abstract class FileController extends Controller
 {
+
     public function removeFile(Request $request){}
 
     public function export(){}

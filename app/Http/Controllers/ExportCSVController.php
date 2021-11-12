@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ExportCSVController extends ExportController
 {
+
     public function GenerateExport($data)
     {
         $fileName = 'ExportCSV.csv';
@@ -18,7 +19,7 @@ class ExportCSVController extends ExportController
         fclose($f);
 
         Export::firstOrCreate(
-            ['file_name' =>$fileName],
+            ['file_name' => $fileName],
             ['format' => 'csv', 'updated_at' => time()]
         );
 

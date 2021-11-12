@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class FileUploadSQLController extends Controller
 {
+
     public function upload(Request $request)
     {
         if ($request->file->getClientMimeType() == "application/sql") {
@@ -21,10 +22,14 @@ class FileUploadSQLController extends Controller
                 $fileModel->save();
 
                 return redirect('home')->with('status_upload', 'File Has been uploaded successfully');
+
             } else {
+
                 return redirect('home')->with('status_upload', 'File already exist');
+
             }
         } else {
+
             return back()->withErrors(['file' => 'The file must be sql type']);
         }
     }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ExportTXTController extends ExportController
 {
+
     public function GenerateExport($data)
     {
         $fileName = 'ExportTXT.txt';
@@ -19,7 +20,7 @@ class ExportTXTController extends ExportController
         fclose($fp);
 
         Export::firstOrCreate(
-            ['file_name' =>$fileName],
+            ['file_name' => $fileName],
             ['format' => 'txt', 'updated_at' => time()]
         );
 

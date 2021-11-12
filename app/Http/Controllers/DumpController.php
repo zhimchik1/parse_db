@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class DumpController extends Controller
 {
+
     public function import(Request $request)
     {
         $files = $request->input('status');
@@ -29,13 +30,13 @@ class DumpController extends Controller
                         'status' => 1
                     ]);
                     $message .= 'Now ingested ' . $file . '<br>';
-
                 }
             }
             return redirect()->back()->with('success_ingest', $message);
         }
         return redirect()->back()->with('danger_ingest', 'Nothing ingest!');
     }
+
 
     public function remove(Request $request)
     {
